@@ -8,6 +8,7 @@
 #include <iostream>
 #include <stack>
 #include <vector>
+#include <unordered_map>
 
 using namespace std;
 
@@ -36,6 +37,25 @@ public:
         }
         return stack.empty();//判断栈是否为空，即可判断字符串s元素是否相匹配
     }
+    
+    bool isValid2(string s) {
+        unordered_map<char, int> map{{'(',1},{'[',2},{'{',3},
+            {')',4},{']',5},{'}',6}};//使用哈希表存储字符
+        stack<char> stack;
+        
+        for(char c:s) {//遍历字符串 c依次取的是s里面的字符,直到取完为止
+            int flag = map[c];//得到字符对应的哈希值
+            if (stack.empty()) {
+                stack.push(c);//若栈为空将字符压入栈中
+            } else if (map[stack.top()]== flag - 3) {
+                stack.pop();//若当前字符和栈顶字符刚好匹配一对，弹出栈顶元素
+            } else {
+                stack.push(c);//若当前字符和栈顶字符不匹配，将字符压入栈
+            }
+        }
+        return stack.empty();//判断栈是否为空，即可判断字符串s元素是否相匹配
+    }
+    
 };
 
 int main(int argc, const char * argv[]) {
@@ -43,11 +63,17 @@ int main(int argc, const char * argv[]) {
     std::cout << "===========\n";
     
     Solution solu;
-    cout<<"result = "<<solu.isValid("()")<<endl;
-    cout<<"result = "<<solu.isValid("()[]{}")<<endl;
-    cout<<"result = "<<solu.isValid("(]")<<endl;
-    cout<<"result = "<<solu.isValid("([)]")<<endl;
-    cout<<"result = "<<solu.isValid("{[]}")<<endl;
+//    cout<<"result = "<<solu.isValid("()")<<endl;
+//    cout<<"result = "<<solu.isValid("()[]{}")<<endl;
+//    cout<<"result = "<<solu.isValid("(]")<<endl;
+//    cout<<"result = "<<solu.isValid("([)]")<<endl;
+//    cout<<"result = "<<solu.isValid("{[]}")<<endl;
+    
+    cout<<"result = "<<solu.isValid2("()")<<endl;
+    cout<<"result = "<<solu.isValid2("()[]{}")<<endl;
+    cout<<"result = "<<solu.isValid2("(]")<<endl;
+    cout<<"result = "<<solu.isValid2("([)]")<<endl;
+    cout<<"result = "<<solu.isValid2("{[]}")<<endl;
     
     std::cout << "===========\n";
     return 0;
