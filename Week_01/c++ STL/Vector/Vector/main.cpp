@@ -67,6 +67,15 @@ int main(int argc, const char * argv[]) {
     }
     cout<<endl;
     
+    vector<int> vec2 = {5, 6, 4, 2, 1};
+    reverse(vec2.begin(), vec2.end());
+    vector<int>::iterator iter2;
+    cout<<"反转结果 = ";
+    for (iter2 = vec2.begin(); iter2 != vec2.end(); iter2++) {
+        cout<<*iter2<<" ";
+    }
+    cout<<endl;
+    
     cout<<endl;
     std::cout << "===============\n";
     return 0;
