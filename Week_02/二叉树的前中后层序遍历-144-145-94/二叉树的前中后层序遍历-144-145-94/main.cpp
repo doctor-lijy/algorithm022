@@ -21,6 +21,20 @@ struct TreeNode {
     TreeNode *left;
     TreeNode *right;
     TreeNode() : val(0), left(nullptr), right(nullptr){}
+    /*
+     这是构造函数
+     构造函数也可以不写，但是new一个新的节点的时候就比较麻烦
+     例如有构造函数，定义初始值为9的节点：
+
+     TreeNode* a = new TreeNode(9);
+     
+     没有构造函数的话就要这么写：
+
+     TreeNode* a = new TreeNode();
+     a->val = 9;
+     a->left = NULL;
+     a->right = NULL;
+     */
     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
@@ -39,6 +53,7 @@ struct TreeNode {
 class Solution {
     
 public:
+    
     //递归实现二叉树遍历
     /*
      二叉树的前序遍历
@@ -319,12 +334,58 @@ public:
         return result;
     }
     
+    TreeNode *root;
+    
+    //递归实现构造二叉树
+    /*
+     递归前序构造二叉树
+     */
+    /*
+     1.确定递归函数的参数和返回值：这里采用二叉链表的方式构造二叉树，所以遍历需要传入二叉树的根节点，所以这里返回类型是TreeNode，我这里希望通过一个向量容器，按照容器中的顺序来构造二叉树，若容器中某个索引对应的值为null，说明该节点当前的左孩子或者右孩子不存在
+     */
+    void createBinaryTree(TreeNode* &T) {
+        int data;
+        cin >> data;
+        if (data != '\n') {
+            if (data == -1) {
+                T = NULL;
+            } else {
+                T = new TreeNode;
+                T->val = data;
+                createBinaryTree(T->left);
+                createBinaryTree(T->right);
+            }
+        }
+    }
+    //他么的，搞了半天也没搞明白递归构造二叉树是怎么弄的，先搁置下往下进行，说明递归还是没有学明白，明天继续吧
 };
 
 int main(int argc, const char * argv[]) {
     // insert code here...
     std::cout << "============\n";
+    Solution solu;
+    solu.root = NULL;
+    //前序输入：2 3 5 -1 4 -1 6 7 8
+    solu.createBinaryTree(solu.root);
     
+    cout<<"前序遍历结果：";
+    vector<int> preResult = solu.preorderTraversal(solu.root);
+    for (int i = 0; i <preResult.size(); i++) {
+        cout<< preResult.at(i)<< " ";
+    }
+    cout<<endl;
+    cout<<"中序序遍历结果：";
+    vector<int> inResult = solu.inorderTraversal(solu.root);
+    for (int i = 0; i < inResult.size(); i++) {
+        cout<< inResult.at(i)<< " ";
+    }
+    cout<<endl;
+    cout<<"后序遍历结果：";
+    vector<int> postresult3 = solu.postorderTraversal(solu.root);
+    for (int i = 0; i < postresult3.size(); i++) {
+        cout<< postresult3.at(i)<< " ";
+    }
+    cout<<endl;
    
     cout << endl;
     std::cout << "============\n";
