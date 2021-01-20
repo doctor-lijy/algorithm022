@@ -343,20 +343,51 @@ public:
     /*
      1.确定递归函数的参数和返回值：这里采用二叉链表的方式构造二叉树，所以遍历需要传入二叉树的根节点，所以这里返回类型是TreeNode，我这里希望通过一个向量容器，按照容器中的顺序来构造二叉树，若容器中某个索引对应的值为null，说明该节点当前的左孩子或者右孩子不存在
      */
-    void createBinaryTree(TreeNode* &T) {
-        int data;
-        cin >> data;
-        if (data != '\n') {
-            if (data == -1) {
-                T = NULL;
-            } else {
-                T = new TreeNode;
-                T->val = data;
-                createBinaryTree(T->left);
-                createBinaryTree(T->right);
-            }
+    TreeNode *createBinaryTree(vector<int>list, int start) {
+        if (list[start] == '#') {
+            return NULL;
         }
+        TreeNode *root = new TreeNode(list[start]);
+        int lnode = 2*start + 1;
+        int rnode = 2*start + 2;
+        if (lnode > list.size() - 1) {
+            root->left = NULL;
+        } else {
+            root->left = createBinaryTree(list, lnode);
+        }
+        if (rnode > list.size() - 1) {
+            root->right = NULL;
+        } else {
+            root->right = createBinaryTree(list, rnode);
+        }
+        return root;
     }
+    TreeNode *createBinaryTreeByLevel(vector<int> elem, int curindex){
+        if (curindex > elem.size() - 1 || elem[curindex] == NULL)
+            return NULL;
+        TreeNode* node = new TreeNode(elem[curindex]);
+        //left
+        node->left = createBinaryTreeByLevel(elem, 2 * curindex + 1);
+        //right
+        node->right = createBinaryTreeByLevel(elem, 2 * curindex + 2);
+        
+        return node;
+    }
+    TreeNode* Insert(TreeNode* root,int data) {
+        if(root == NULL) { // empty tree
+            root = new TreeNode(data);
+            }
+            // if data to be inserted is lesser, insert in left subtree.
+            else if(data != -1) {
+                root->left = Insert(root->left,data);
+            }
+            // else, insert in right subtree.
+            else {
+                root->right = Insert(root->right,data);
+            }
+        return root;
+    }
+    
     //他么的，搞了半天也没搞明白递归构造二叉树是怎么弄的，先搁置下往下进行，说明递归还是没有学明白，明天继续吧
 };
 
@@ -364,9 +395,30 @@ int main(int argc, const char * argv[]) {
     // insert code here...
     std::cout << "============\n";
     Solution solu;
-    solu.root = NULL;
-    //前序输入：2 3 5 -1 4 -1 6 7 8
-    solu.createBinaryTree(solu.root);
+//    vector<int> datanum = {1,2,3,4,5,NULL,6,NULL,NULL,7,8,NULL,NULL,NULL,NULL};
+//    solu.root = solu.createBinaryTreeByLevel(datanum, 0);
+//    vector<int> datanum = {1,2,3,4,5,'#',6,'#','#',7,8};
+//        //1,2,3,4,5,'#',6,'#','#',7,8,'#','#','#','#' 后面的#可省略
+//    solu.root = solu.createBinaryTree(datanum, 0);
+    
+    solu.root = NULL;  // Creating an empty tree
+        /*Code to test the logic*/
+    solu.root = solu.Insert(solu.root,1);
+    solu.root = solu.Insert(solu.root,2);
+    solu.root = solu.Insert(solu.root,3);
+    solu.root = solu.Insert(solu.root,4);
+    solu.root = solu.Insert(solu.root,5);
+    solu.root = solu.Insert(solu.root,-1);
+    solu.root = solu.Insert(solu.root,6);
+    solu.root = solu.Insert(solu.root,-1);
+    solu.root = solu.Insert(solu.root,-1);
+    solu.root = solu.Insert(solu.root,7);
+    solu.root = solu.Insert(solu.root,8);
+    solu.root = solu.Insert(solu.root,-1);
+    solu.root = solu.Insert(solu.root,-1);
+    solu.root = solu.Insert(solu.root,-1);
+    solu.root = solu.Insert(solu.root,-1);
+
     
     cout<<"前序遍历结果：";
     vector<int> preResult = solu.preorderTraversal(solu.root);
