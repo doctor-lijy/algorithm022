@@ -89,9 +89,9 @@ public:
         }
         /*
          3.确定单层循环逻辑：中序遍历是左->根->右的顺序，所以在单层递归的逻辑，要先遍历左子树，直至当前节点左孩子节点==NULL，直接reture，然后取中间节点的数值*/
-        preTraversal(cur->left, vec);
+        inTraversal(cur->left, vec);
         vec.push_back(cur->val);
-        preTraversal(cur->right, vec);
+        inTraversal(cur->right, vec);
     }
     vector<int> inorderTraversal(TreeNode *root) {
         vector<int> result;
@@ -341,7 +341,10 @@ public:
      递归前序构造二叉树
      */
     /*
-     1.确定递归函数的参数和返回值：这里采用二叉链表的方式构造二叉树，所以遍历需要传入二叉树的根节点，所以这里返回类型是TreeNode，我这里希望通过一个向量容器，按照容器中的顺序来构造二叉树，若容器中某个索引对应的值为null，说明该节点当前的左孩子或者右孩子不存在
+     这里通过使用向量容器顺序存储二叉树的各个节点
+     左节点的存储索引下标：2*i+1
+     右节点的存储索引下标：2*i+2
+     这里约定存储#是标识该节点是空节点
      */
     TreeNode *createBinaryTree(vector<int>list, int start) {
         if (list[start] == '#') {
@@ -350,7 +353,7 @@ public:
         TreeNode *root = new TreeNode(list[start]);
         int lnode = 2*start + 1;
         int rnode = 2*start + 2;
-        if (lnode > list.size() - 1) {
+        if (lnode > list.size() - 1) {//判断当前索引是否超过数组的长度
             root->left = NULL;
         } else {
             root->left = createBinaryTree(list, lnode);
@@ -362,6 +365,7 @@ public:
         }
         return root;
     }
+    //这个是对上面的一个更简洁的写法
     TreeNode *createBinaryTreeByLevel(vector<int> elem, int curindex){
         if (curindex > elem.size() - 1 || elem[curindex] == NULL)
             return NULL;
@@ -397,47 +401,64 @@ int main(int argc, const char * argv[]) {
     Solution solu;
 //    vector<int> datanum = {1,2,3,4,5,NULL,6,NULL,NULL,7,8,NULL,NULL,NULL,NULL};
 //    solu.root = solu.createBinaryTreeByLevel(datanum, 0);
-//    vector<int> datanum = {1,2,3,4,5,'#',6,'#','#',7,8};
-//        //1,2,3,4,5,'#',6,'#','#',7,8,'#','#','#','#' 后面的#可省略
-//    solu.root = solu.createBinaryTree(datanum, 0);
+    vector<int> datanum = {1, 2, 3, 4, 5,'#',6,'#','#', 7 ,8};
+        //1,2,3,4,5,'#',6,'#','#',7,8,'#','#','#','#' 后面的#可省略
+    solu.root = solu.createBinaryTree(datanum, 0);
     
-    solu.root = NULL;  // Creating an empty tree
-        /*Code to test the logic*/
-    solu.root = solu.Insert(solu.root,1);
-    solu.root = solu.Insert(solu.root,2);
-    solu.root = solu.Insert(solu.root,3);
-    solu.root = solu.Insert(solu.root,4);
-    solu.root = solu.Insert(solu.root,5);
-    solu.root = solu.Insert(solu.root,-1);
-    solu.root = solu.Insert(solu.root,6);
-    solu.root = solu.Insert(solu.root,-1);
-    solu.root = solu.Insert(solu.root,-1);
-    solu.root = solu.Insert(solu.root,7);
-    solu.root = solu.Insert(solu.root,8);
-    solu.root = solu.Insert(solu.root,-1);
-    solu.root = solu.Insert(solu.root,-1);
-    solu.root = solu.Insert(solu.root,-1);
-    solu.root = solu.Insert(solu.root,-1);
+//    solu.root = NULL;  // Creating an empty tree
+//        /*Code to test the logic*/
+//    solu.root = solu.Insert(solu.root,1);
+//    solu.root = solu.Insert(solu.root,2);
+//    solu.root = solu.Insert(solu.root,3);
+//    solu.root = solu.Insert(solu.root,4);
+//    solu.root = solu.Insert(solu.root,5);
+//    solu.root = solu.Insert(solu.root,-1);
+//    solu.root = solu.Insert(solu.root,6);
+//    solu.root = solu.Insert(solu.root,-1);
+//    solu.root = solu.Insert(solu.root,-1);
+//    solu.root = solu.Insert(solu.root,7);
+//    solu.root = solu.Insert(solu.root,8);
+//    solu.root = solu.Insert(solu.root,-1);
+//    solu.root = solu.Insert(solu.root,-1);
+//    solu.root = solu.Insert(solu.root,-1);
+//    solu.root = solu.Insert(solu.root,-1);
 
     
     cout<<"前序遍历结果：";
+    cout<<endl;
     vector<int> preResult = solu.preorderTraversal(solu.root);
     for (int i = 0; i <preResult.size(); i++) {
         cout<< preResult.at(i)<< " ";
     }
     cout<<endl;
+    vector<int> preResult2 = solu.preorderTraversal2(solu.root);
+    for (int i = 0; i <preResult2.size(); i++) {
+        cout<< preResult2.at(i)<< " ";
+    }
+    cout<<endl;
     cout<<"中序序遍历结果：";
+    cout<<endl;
     vector<int> inResult = solu.inorderTraversal(solu.root);
     for (int i = 0; i < inResult.size(); i++) {
         cout<< inResult.at(i)<< " ";
     }
     cout<<endl;
-    cout<<"后序遍历结果：";
-    vector<int> postresult3 = solu.postorderTraversal(solu.root);
-    for (int i = 0; i < postresult3.size(); i++) {
-        cout<< postresult3.at(i)<< " ";
+    vector<int> inResult2 = solu.inorderTraversal2(solu.root);
+    for (int i = 0; i < inResult2.size(); i++) {
+        cout<< inResult2.at(i)<< " ";
     }
     cout<<endl;
+    cout<<"后序遍历结果：";
+    cout<<endl;
+    vector<int> postresult = solu.postorderTraversal(solu.root);
+    for (int i = 0; i < postresult.size(); i++) {
+        cout<< postresult.at(i)<< " ";
+    }
+    cout<<endl;
+    vector<int> postresult2 = solu.postorderTraversal2(solu.root);
+    for (int i = 0; i < postresult2.size(); i++) {
+        cout<< postresult.at(i)<< " ";
+    }
    
     cout << endl;
     std::cout << "============\n";
