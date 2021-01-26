@@ -39,6 +39,14 @@ class Solution {
             result.push_back(path);
             return;
         }
+        /*
+         剪枝优化
+         */
+//        for (int i = startIndex; i <= n - (k - path.size()) + 1; i++) {
+//            path.push_back(i); // 处理节点
+//            backtracking(n, k, i + 1); // 递归
+//            path.pop_back();// 回溯，撤销处理的节点
+//        }
         for (int i = startIndex; i <= n; i++) {
             path.push_back(i); // 处理节点
             backtracking(n, k, i + 1); // 递归
@@ -60,7 +68,7 @@ int main(int argc, const char * argv[]) {
     std::cout << "==========\n";
     Solution solu;
     vector<vector<int>> vec;
-    vec = solu.combine(4, 2);
+    vec = solu.combine(4, 3);
     for (int i = 0; i < vec.size(); i++) {
         for (int j = 0; j < vec[i].size(); j++) {
             cout<<vec[i][j]<<" ";
