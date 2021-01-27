@@ -46,5 +46,13 @@ public:
 int main(int argc, const char * argv[]) {
     // insert code here...
     std::cout << "Hello, World!\n";
+    
+    Solution solu;
+    vector<int> g = {2, 3, 4, 5};
+    vector<int> s = {1 ,1 ,1};
+    int result = solu.findContentChildren(g, s);
+    cout<<"result = "<<result<<endl;
+    
+    std::cout << "Hello, World!\n";
     return 0;
 }
