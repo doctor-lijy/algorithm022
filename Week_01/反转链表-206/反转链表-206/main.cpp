@@ -13,6 +13,7 @@ using namespace std;
 struct ListNode {
     int val;
     ListNode *next;
+    ListNode(int x): val(x), next(NULL){};
 };
 
 class Solution {
@@ -91,12 +92,32 @@ public:
         return ret;
     }
     
+    ListNode *reverseList4(ListNode *head) {
+        ListNode *cur = head, *pre = NULL;
+        while (cur != NULL) {
+            ListNode *tmp = cur->next; // 保存cur的下一个节点
+            cur->next = pre; // 翻转操作
+            // 更新pre 和 cur指针
+            pre = cur;
+            cur = tmp;
+        }
+        return pre;
+    }
+    
+    ListNode *reverse(ListNode *pre, ListNode *cur) {
+        if (cur == NULL) return pre;
+        ListNode *tmp = cur->next;
+        cur->next = pre;
+        return reverse(cur, tmp);
+    }
+    ListNode *reverseList3(ListNode *head) {
+        return reverse(NULL, head);
+    }
+    
     /* 链表尾加入新元素*/
     ListNode* addNode(ListNode*head ,int addValue) {
-        ListNode* newNode=new ListNode();
-         newNode->next=NULL;
-         newNode->val=addValue;
-        ListNode* p=new ListNode();
+        ListNode* newNode = new ListNode(addValue);
+        ListNode* p = new ListNode(0);//创建一个虚拟的头结点next指针指向head
          p=head; //list的头结点
          if(head == NULL) {
            head=newNode; //新节点为链表头节点
@@ -121,6 +142,7 @@ public:
           }
         }
     }
+
 };
 
 int main(int argc, const char * argv[]) {
@@ -135,7 +157,7 @@ int main(int argc, const char * argv[]) {
     cout<<endl;
 //    ListNode *reverseNode = solu.reverseList(head);
     
-    ListNode *reverseNode = solu.reverseList2(head);
+    ListNode *reverseNode = solu.reverseList4(head);
     cout<<endl;
     solu.travelList(reverseNode);
 
