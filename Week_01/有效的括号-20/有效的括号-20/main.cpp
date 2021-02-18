@@ -12,6 +12,43 @@
 
 using namespace std;
 
+/*
+ 数据结构和算法应用往往隐藏在我们看不到的地方
+ */
+
+/*
+ 给定一个只包括 '('，')'，'{'，'}'，'['，']' 的字符串，判断字符串是否有效。
+
+ 有效字符串需满足：
+
+ 左括号必须用相同类型的右括号闭合。
+ 左括号必须以正确的顺序闭合。
+ 注意空字符串可被认为是有效字符串。
+ 示例 1:
+ 输入: "()"
+ 输出: true
+
+ 示例 2:
+ 输入: "()[]{}"
+ 输出: true
+
+ 示例 3:
+ 输入: "(]"
+ 输出: false
+
+ 示例 4:
+ 输入: "([)]"
+ 输出: false
+
+ 示例 5:
+ 输入: "{[]}"
+ 输出: true
+ */
+
+/*
+ 括号匹配是使用栈解决的经典问题
+ */
+
 class Solution {
     
     /*
@@ -71,7 +108,7 @@ int main(int argc, const char * argv[]) {
     
     cout<<"result = "<<solu.isValid2("()")<<endl;
     cout<<"result = "<<solu.isValid2("()[]{}")<<endl;
-    cout<<"result = "<<solu.isValid2("(]")<<endl;
+    cout<<"result = "<<solu.isValid2("(][)")<<endl;
     cout<<"result = "<<solu.isValid2("([)]")<<endl;
     cout<<"result = "<<solu.isValid2("{[]}")<<endl;
     
