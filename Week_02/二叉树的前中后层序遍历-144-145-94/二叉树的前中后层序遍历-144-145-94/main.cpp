@@ -393,6 +393,17 @@ public:
     }
     
     //他么的，搞了半天也没搞明白递归构造二叉树是怎么弄的，先搁置下往下进行，说明递归还是没有学明白，明天继续吧
+    
+    /*
+     计算二叉树的节点个数 = 根节点 + 左子树节点个数 + 右子树节点个数
+     */
+    int treeNodeCount(TreeNode *head) {
+        if (head == NULL) return 0;
+        int countl = count(head->left);
+        int countr = count(head->right);
+        
+        return 1 + countl + countr;
+    }
 };
 
 int main(int argc, const char * argv[]) {
@@ -423,6 +434,8 @@ int main(int argc, const char * argv[]) {
 //    solu.root = solu.Insert(solu.root,-1);
 //    solu.root = solu.Insert(solu.root,-1);
 
+    int treeNodeCount = solu.treeNodeCount(solu.root);
+    cout<<"二叉树的节点个数 = "<<treeNodeCount<<endl;
     
     cout<<"前序遍历结果：";
     cout<<endl;

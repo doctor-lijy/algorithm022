@@ -82,9 +82,6 @@ public:
          */
         //这个过程中head作为形参是不断地在变化的
         ListNode* ret = reverseList2(head->next);
-        cout <<"ret = "<< ret->val<<endl;
-        cout <<"head = "<< head->val<<endl;
-        cout <<"head->next = "<< head->next->val<<endl;
         //将head挂到head->next节点的后面就完成了链表的反转
         head->next->next = head;
         //这里head相当于变成了尾结点，next都是为空的，否则会构成环
