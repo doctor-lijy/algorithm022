@@ -239,6 +239,14 @@ public:
      如何标记呢，就是要处理的节点放入栈之后，紧接着放入一个空指针作为标记。
      */
     /*
+     别人的一个总结借鉴：
+     以中序遍历为例：
+     1、栈的特性入栈和出栈顺序相反，想要输出 《左中右》那么入栈的顺序就是《右中左》
+     2、入栈的处理：可以把整个树简化成3个节点一组的多个子树（即父节点，左孩子，右孩子）这个三个节点组成的子树。每次循环处理的实际就是将这样的3个节点按照规则顺序（右中左）进行入栈。所以才有了代码中看到的：每次都是先将栈顶元素去除，然后以栈顶元素作为父节点的3个节点子树按照规则顺序（右中左）入栈。
+     3、NULL节点的加入和出栈规则的规定：保证了当左孩子作为栈顶元素时，不会立即出栈，而是会将当前左孩子（即栈顶元素）作为下次遍历的父节点按照规则顺序入栈。直到当前的左孩子作为父节点再无孩子（无孩子时，入栈规则就成了（父节点，NULL节点）），遇到NULL节点了，才进行出栈。这样就保证了左孩子先出栈了。
+     */
+    
+    /*
      中序遍历标记法
      */
     vector<int> inorderTraversal3(TreeNode* root) {
@@ -399,10 +407,8 @@ public:
      */
     int treeNodeCount(TreeNode *head) {
         if (head == NULL) return 0;
-        int countl = count(head->left);
-        int countr = count(head->right);
         
-        return 1 + countl + countr;
+        return 1 + treeNodeCount(head->left) + treeNodeCount(head->right);
     }
 };
 

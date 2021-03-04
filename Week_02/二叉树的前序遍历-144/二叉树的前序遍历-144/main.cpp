@@ -22,25 +22,19 @@ struct TreeNode {
 class Solution {
     
 public:
-    void traversal(TreeNode *cur, vector<int> &vec) {
-        if (cur == NULL) {
-            return;
+    int sum(int n) {
+        if (n <= 0) {
+            return 0;
         }
-        vec.push_back(cur->val);
-        traversal(cur->left, vec);
-        traversal(cur->right, vec);
-    }
-    vector<int> preorderTraversal(TreeNode *root) {
-        vector<int> result;
-        traversal(root, result);
-        return result;
+        return n + sum(n-1);
     }
 };
 
 int main(int argc, const char * argv[]) {
     // insert code here...
     std::cout << "============\n";
-    
+    Solution solu;
+    cout<<"求和 = "<<solu.sum(100)<<endl;
     
     std::cout << "============\n";
     return 0;

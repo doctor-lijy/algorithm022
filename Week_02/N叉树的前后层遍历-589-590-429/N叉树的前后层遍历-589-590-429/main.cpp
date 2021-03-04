@@ -8,6 +8,7 @@
 #include <iostream>
 #include <vector>
 #include <stack>
+#include <queue>
 
 using namespace std;
 
@@ -71,6 +72,30 @@ public:
             }
         }
         
+        return result;
+    }
+    
+    vector<vector<int>> levelOrder(Node* root) {
+        vector<vector<int>> result;
+        queue<Node *>que;
+        if (root != NULL) {
+            que.push(root);
+        }
+        while (!que.empty()) {
+            int size = (int)que.size();
+            vector<int> vec;
+            for (int i = 0; i < size; i++) {
+                Node *node = que.front();
+                vec.push_back(node->val);
+                que.pop();
+                for (int i = 0; i < node->children.size(); i++) {
+                    if (node->children[i]) {
+                        que.push(node->children[i]);
+                    }
+                }
+            }
+            result.push_back(vec);
+        }
         return result;
     }
     
