@@ -30,7 +30,7 @@ struct TreeNode {
 class Solution {
     
 public:
-    TreeNode *traversal(vector<int> &inorder, vector<int>&postorder) {
+    TreeNode *traversal(vector<int> &inorder, vector<int> postorder) {
         //第一步
         if (postorder.size() == 0) return NULL;
         
@@ -41,49 +41,61 @@ public:
         //叶子节点
         if (postorder.size() == 1) return root;
         
-        //第三步：找到中序遍历切割点
+        //第三步：找切割点
         int delimiterIndex;
         for (delimiterIndex = 0; delimiterIndex < inorder.size(); delimiterIndex++) {
-            if (inorder[delimiterIndex] == rootValue) break;
+            if (inorder[delimiterIndex] == rootValue) {
+                break;
+            }
         }
         
         //第四步：切割中序数组，得到 中序左数组和中序右数组
-        //第五步：切割后续数组，得到 后序左数组和后序右数组
-        
-        //切割中序数组
-        //左闭右开区间 [0, delimiterIndex)
-        vector<int> leftInorder(inorder.begin(), inorder.begin()+delimiterIndex);
-        // [delimiterIndex + 1, end)
+        //第五步：切割后序数组，得到 后序左数组和后序右数组
+        /*
+         这里这个区间不知道为什么这么写就可以实现左闭右开区间???
+         */
+        //左闭右开区间
+        vector<int> leftInorder(inorder.begin(), inorder.begin() + delimiterIndex);
         vector<int> rightInorder(inorder.begin() + delimiterIndex + 1, inorder.end());
         
-        //postorder 舍弃末尾元素
+        //postorder 舍弃末尾元素，因为这个元素就是中间节点，已经用过了
         postorder.resize(postorder.size() - 1);
         
-        // 切割后序数组
-        // 依然左闭右开，注意这里使用了左中序数组大小作为切割点
-        // [0, leftInorder.size)
+        //左闭右开，注意这里使用了左中序数组大小作为切割点
         vector<int> leftPostorder(postorder.begin(), postorder.begin() + leftInorder.size());
-        // [leftInorder.size(), end)
-        vector<int> rightPostorder(postorder.begin() + leftInorder.size(), postorder.end());
+        vector<int> rightPostorder(postorder.begin() + leftInorder.size(), postorder.begin());
         
-        //第六步
-//        root->left = traversal(中序左数组, 后序左数组);
-//        root->right = traversal(中序右数组, 后序右数组);
         root->left = traversal(leftInorder, leftPostorder);
         root->right = traversal(rightInorder, rightPostorder);
         
         return root;
     }
     
-    TreeNode *buildTree(vector<int> &inorder, vector<int> &postorder) {
-        if (inorder.size() == 0 || postorder.size() == 0) return NULL;
-        
+    TreeNode* buildTree(vector<int>& inorder, vector<int>& postorder) {
+        if (inorder.size() == 0 || postorder.size() == 0) {
+            return NULL;
+        }
         return traversal(inorder, postorder);
     }
 };
 
 int main(int argc, const char * argv[]) {
     // insert code here...
+    std::cout << "Hello, World!\n";
+    
+    int index = 4;
+    vector<int> vec = {1, 2 ,4, 3, 5 ,6, 6, 7, 8, 8, 9};
+    vector<int> leftVec(vec.begin(), vec.begin()+ index);
+    vector<int> rightVec(vec.begin() + index + 1, vec.end());
+    for (int i = 0; i < leftVec.size(); i++) {
+        cout<<leftVec[i]<<" ";
+    }
+    cout<<endl;
+    for (int i = 0; i < rightVec.size(); i++) {
+        cout<<rightVec[i]<<" ";
+    }
+    cout<<endl;
+    
     std::cout << "Hello, World!\n";
     return 0;
 }
