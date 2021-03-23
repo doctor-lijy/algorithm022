@@ -55,6 +55,21 @@ public:
         
         return NULL;
     }
+    
+    /*迭代法*/
+    
+    TreeNode *searchBST2(TreeNode *root, int val) {
+        while (root != NULL) {
+            if (root->val > val) {
+                root = root->left;
+            } else if (root->val < val) {
+                root = root->right;
+            } else {
+                return root;
+            }
+        }
+        return NULL;
+    }
 };
 
 int main(int argc, const char * argv[]) {

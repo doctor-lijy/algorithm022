@@ -33,12 +33,33 @@ using namespace std;
 class Solution {
     
 public:
-    
+    void headify(vector<int> &nums, int length, int i) {
+        int left = 2 * i + 1, right = 2 * i + 2;
+        int largest = i;
+        if (left < length && nums[left] > nums[largest]) {
+            largest = left;
+        }
+        if (right < length && nums[right] > nums[largest]) {
+            largest = right;
+        }
+        if (largest != i) {
+            swap(nums[i], nums[largest]);
+            headify(nums, length, largest);
+        }
+    }
 };
 
 int main(int argc, const char * argv[]) {
     // insert code here...
     std::cout << "Hello, World!\n";
+    
+    Solution solu;
+    vector<int> vec = {1, 2, 4, 5, 3};
+    solu.headify(vec, (int)vec.size(), 0);
+    for (int i = 0; i < vec.size(); i++) {
+        cout<<vec[i]<<" ";
+    }
+    cout<<endl;
     
     cout<<endl;
     std::cout << "Hello, World!\n";
