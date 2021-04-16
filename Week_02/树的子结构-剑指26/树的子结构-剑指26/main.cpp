@@ -29,31 +29,14 @@ struct TreeNode {
  */
 
 class Solution {
-public:
-    bool RootHasSubTree(TreeNode *pRoot1, TreeNode *pRoot2) {
-        if (pRoot1 == NULL) return false;
-        if (pRoot2 == NULL) return false;
-        if (pRoot1->val == pRoot2->val) {
-            return RootHasSubTree(pRoot1->left, pRoot2->left) && RootHasSubTree(pRoot1->right, pRoot2->right);
-        } else {
-            return false;
-        }
+    bool recur(TreeNode *A, TreeNode *B) {
+        if (B == NULL) return true;
+        if (A == NULL || A->val != B->val) return false;
+        return recur(A->left, B->left) && recur(A->right, B->right);
     }
-    bool hasSubTree(TreeNode *pRoot1, TreeNode *pRoot2) {
-        if (pRoot1 == NULL || pRoot2 == NULL) {
-            return false;
-        }
-        bool result = false;
-        if (pRoot1->val == pRoot2->val) {
-            result = RootHasSubTree(pRoot1, pRoot2);
-        }
-        if (!result) {
-            result = hasSubTree(pRoot1->left, pRoot2->left);
-        }
-        if (!result) {
-            result = hasSubTree(pRoot1->right, pRoot2->right);
-        }
-        return result;
+public:
+    bool isSubStructure(TreeNode *A, TreeNode *B) {
+        return (A != NULL && B != NULL) && (recur(A, B) || isSubStructure(A->left, B) || isSubStructure(A->right, B));
     }
     
 };

@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		11827A4225DF65CD00C436E1 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 11827A4125DF65CD00C436E1 /* main.cpp */; };
+		1196C50B261EF2940095D853 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1196C50A261EF2940095D853 /* main.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		11827A3C25DF65CD00C436E1 /* CopyFiles */ = {
+		1196C505261EF2940095D853 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -23,12 +23,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		11827A3E25DF65CD00C436E1 /* 滑动窗口最大值-239 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "滑动窗口最大值-239"; sourceTree = BUILT_PRODUCTS_DIR; };
-		11827A4125DF65CD00C436E1 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		1196C507261EF2940095D853 /* 最小操作次数 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "最小操作次数"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1196C50A261EF2940095D853 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		11827A3B25DF65CD00C436E1 /* Frameworks */ = {
+		1196C504261EF2940095D853 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -38,64 +38,64 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		11827A3525DF65CD00C436E1 = {
+		1196C4FE261EF2940095D853 = {
 			isa = PBXGroup;
 			children = (
-				11827A4025DF65CD00C436E1 /* 滑动窗口最大值-239 */,
-				11827A3F25DF65CD00C436E1 /* Products */,
+				1196C509261EF2940095D853 /* 最小操作次数 */,
+				1196C508261EF2940095D853 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		11827A3F25DF65CD00C436E1 /* Products */ = {
+		1196C508261EF2940095D853 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				11827A3E25DF65CD00C436E1 /* 滑动窗口最大值-239 */,
+				1196C507261EF2940095D853 /* 最小操作次数 */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		11827A4025DF65CD00C436E1 /* 滑动窗口最大值-239 */ = {
+		1196C509261EF2940095D853 /* 最小操作次数 */ = {
 			isa = PBXGroup;
 			children = (
-				11827A4125DF65CD00C436E1 /* main.cpp */,
+				1196C50A261EF2940095D853 /* main.cpp */,
 			);
-			path = "滑动窗口最大值-239";
+			path = "最小操作次数";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		11827A3D25DF65CD00C436E1 /* 滑动窗口最大值-239 */ = {
+		1196C506261EF2940095D853 /* 最小操作次数 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 11827A4525DF65CD00C436E1 /* Build configuration list for PBXNativeTarget "滑动窗口最大值-239" */;
+			buildConfigurationList = 1196C50E261EF2940095D853 /* Build configuration list for PBXNativeTarget "最小操作次数" */;
 			buildPhases = (
-				11827A3A25DF65CD00C436E1 /* Sources */,
-				11827A3B25DF65CD00C436E1 /* Frameworks */,
-				11827A3C25DF65CD00C436E1 /* CopyFiles */,
+				1196C503261EF2940095D853 /* Sources */,
+				1196C504261EF2940095D853 /* Frameworks */,
+				1196C505261EF2940095D853 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "滑动窗口最大值-239";
-			productName = "滑动窗口最大值-239";
-			productReference = 11827A3E25DF65CD00C436E1 /* 滑动窗口最大值-239 */;
+			name = "最小操作次数";
+			productName = "最小操作次数";
+			productReference = 1196C507261EF2940095D853 /* 最小操作次数 */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		11827A3625DF65CD00C436E1 /* Project object */ = {
+		1196C4FF261EF2940095D853 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 1240;
 				TargetAttributes = {
-					11827A3D25DF65CD00C436E1 = {
+					1196C506261EF2940095D853 = {
 						CreatedOnToolsVersion = 12.4;
 					};
 				};
 			};
-			buildConfigurationList = 11827A3925DF65CD00C436E1 /* Build configuration list for PBXProject "滑动窗口最大值-239" */;
+			buildConfigurationList = 1196C502261EF2940095D853 /* Build configuration list for PBXProject "最小操作次数" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -103,29 +103,29 @@
 				en,
 				Base,
 			);
-			mainGroup = 11827A3525DF65CD00C436E1;
-			productRefGroup = 11827A3F25DF65CD00C436E1 /* Products */;
+			mainGroup = 1196C4FE261EF2940095D853;
+			productRefGroup = 1196C508261EF2940095D853 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				11827A3D25DF65CD00C436E1 /* 滑动窗口最大值-239 */,
+				1196C506261EF2940095D853 /* 最小操作次数 */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		11827A3A25DF65CD00C436E1 /* Sources */ = {
+		1196C503261EF2940095D853 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				11827A4225DF65CD00C436E1 /* main.cpp in Sources */,
+				1196C50B261EF2940095D853 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		11827A4325DF65CD00C436E1 /* Debug */ = {
+		1196C50C261EF2940095D853 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -176,7 +176,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 11.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -184,7 +184,7 @@
 			};
 			name = Debug;
 		};
-		11827A4425DF65CD00C436E1 /* Release */ = {
+		1196C50D261EF2940095D853 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -229,14 +229,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 11.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
 			};
 			name = Release;
 		};
-		11827A4625DF65CD00C436E1 /* Debug */ = {
+		1196C50F261EF2940095D853 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -244,7 +244,7 @@
 			};
 			name = Debug;
 		};
-		11827A4725DF65CD00C436E1 /* Release */ = {
+		1196C510261EF2940095D853 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -255,25 +255,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		11827A3925DF65CD00C436E1 /* Build configuration list for PBXProject "滑动窗口最大值-239" */ = {
+		1196C502261EF2940095D853 /* Build configuration list for PBXProject "最小操作次数" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				11827A4325DF65CD00C436E1 /* Debug */,
-				11827A4425DF65CD00C436E1 /* Release */,
+				1196C50C261EF2940095D853 /* Debug */,
+				1196C50D261EF2940095D853 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		11827A4525DF65CD00C436E1 /* Build configuration list for PBXNativeTarget "滑动窗口最大值-239" */ = {
+		1196C50E261EF2940095D853 /* Build configuration list for PBXNativeTarget "最小操作次数" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				11827A4625DF65CD00C436E1 /* Debug */,
-				11827A4725DF65CD00C436E1 /* Release */,
+				1196C50F261EF2940095D853 /* Debug */,
+				1196C510261EF2940095D853 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 11827A3625DF65CD00C436E1 /* Project object */;
+	rootObject = 1196C4FF261EF2940095D853 /* Project object */;
 }
